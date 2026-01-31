@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: port-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn port.wsgi"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.0
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "*"
